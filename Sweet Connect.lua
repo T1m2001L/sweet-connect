@@ -7,10 +7,10 @@ __email__	= "double.tap.inside@gmail.com"
 MAIN_TITLE	= "Sweet Connect"
 MAIN_CMD	= "scm"
 
--- ! Добавь шифрование, а то рано или поздно спиздят нахуй у всех акки.
--- ! Сделай блокировку смены никнейма галочкой, возможно.
--- ! Сделай фикс курсора вкл/выкл, возможно.
--- ! У меня вопрос, а нахуя ты делал заточение курсора вместо просто отцентровать его? Наверное были на то причины?
+-- ! Add encryption, otherwise sooner or later everyone's accounts will get stolen.
+-- ! Maybe add a checkbox to block nickname changes.
+-- ! Maybe add a cursor fix on/off toggle.
+-- ! Question: why did you implement cursor clipping instead of simply recentering it? There must have been reasons?
 
 ---- Modules -----
 require 'lib.moonloader'
@@ -253,7 +253,7 @@ function imgui.Link(label, description)
     return result
 end
 
--- Целое число
+-- Integer
 imgui.InputIntEx = {
 	_edited_item = {}
 }
@@ -275,7 +275,7 @@ end})
 
 
 
--- Имгуи холдер
+-- ImGui holder
 im = {}
 setmetatable(im, {__call = function(self, str_id, func, ...)
 	if im[str_id] then
@@ -336,7 +336,7 @@ function imgui.ButtonGreen(...)
 end
 
 
--- Стиль
+-- Style
 function apply_custom_style()
 	-- v6
  
@@ -348,7 +348,7 @@ function apply_custom_style()
 	local ImVec2 = imgui.ImVec2
 
    
-	--style.WindowPadding = ImVec2(5, 5) -- это
+		--style.WindowPadding = ImVec2(5, 5) -- this
 	--style.FramePadding = ImVec2(5, 5)
 	style.WindowRounding = 4.0
 	style.WindowTitleAlign = imgui.ImVec2(0.5, 0.84)
@@ -671,7 +671,7 @@ local HKeys = {
 		
 	--]]	
 	
-	-- ѕри блокеровке DOWN надо ли блокировать с ним и HOLD ?
+	-- When blocking DOWN, should HOLD be blocked along with it?
 }
 setmetatable(HKeys, {
 	__call = function(self)
@@ -1616,343 +1616,8 @@ LANG_ENG = {
 
 }
 
-LANG_RUS = {
-	LABEL								= u8"Русский",
-	
-	-- Hello
-	HELLO_MENU							= "Меню",
-	HELLO_NEW_VERSION					= "Новая версия",
-	HELLO_SAVED							= "Ответ на диалог сохранен",
-	HELLO_DISCONNECTED					= "Вы закрыли соединение",
-	
-	-- Top
-	TAB_SETTINGS						= u8"Настройки",
-	TAB_ACCOUNTS						= u8"Аккаунты",
-	TAB_SETTINGS_RECONNECT				= u8"Переподключение",
-	TAB_SETTINGS_AUTORESPONSE			= u8"Ответ на диалоги",
-	TAB_SETTINGS_OTHER					= u8"Прочее",
-	TAB_SETTINGS_INFO					= u8"О скрипте",
-	ADD_CURRENT_DIALOG					= u8"Сохранить ответ на диалог",
-	
-	
-	-- Settings
-	SETTINGS_RESTART_REQUIRED			= u8"Требуется перезагрузка игры",
-	SETTINGS_FIX_INTERIOR_BUG			= u8"Исправлять баг в зеркальных интерьерах с анти-AFK",
-	SETTINGS_HELLO						= u8"Отображать подсказки в чате",
-	SETTINGS_SAVE_BUTTON				= u8"Отображать зелёную кнопку добавления диалога",
-	SETTINGS_NOTIF						= u8"Отображать всплывающие подсказки",
-	SETTINGS_AUTORECONNECT				= u8"Автоматическое переподключение",
-	
-	SETTINGS_SC_TIMEOUT					= u8"Тайм-аут переподключения командой /sc или горячей клавишей (сек)", --==1
-	SETTINGS_DISCONNECT_TIMEOUT			= u8"Тайм-аут при разъединении (сек)",
-	SETTINGS_BANNED_IP_TIMEOUT			= u8"Тайм-аут при бане IP (сек)",
-	SETTINGS_LOST_CONNECTION_TIMEOUT	= u8"Тайм-аут при потере соединения (сек)",
-	
-	SETTINGS_AUTORESPONSE				= u8"Автоматический ответ на диалоги",
-	SETTINGS_AUTORESPONSE_DELAY			= u8"Задержка перед ответом (мс)",
-	SETTINGS_FASTCONNECT				= u8"Фаст коннект",
-	SETTINGS_WIB						= u8"Анти-AFK",
-	SETTINGS_PAUSE						= u8"Не переподключаться автоматически",
-	SETTINGS_PAUSE_TIME					= u8"Время",
-	
-	SETTINGS_RECONNECT					= u8"-    Переподключиться",
-	SETTINGS_DISCONNECT					= u8"-    Отключиться",
-	SETTINGS_MENU						= u8"-    Открыть меню",
-	SETTINGS_COMMANDS					= u8"Команды",
-	SETTINGS_CONNECTING_TIMEOUT			= u8"Тайм-аут на подключение (мс)",
-	SETTINGS_RECONNECTING_WINDOW		= u8"Отображать окно переподключения",
-	SETTINGS_MENU_CHEAT					= u8"-    Открыть меню (Использовать как чит-код)",
-	
-	NOTIF_WIB_OFF						= u8"Анти-AFK: Отключен",
-	NOTIF_WIB_ON						= u8"Анти-AFK: Включен",
-	NOTIF_AUTO_RESPONSE					= u8"Авто-ответ",
-	
-	HOTKEY_AND_CMD						= u8"Горячие клавиши",
-	HOTKEY_RECONNECT					= u8"Переподключиться через %s сек",
-	HOTKEY_DISCONNECT_NOW				= u8"Отключиться",
-	HOTKEY_MENU							= u8"Открыть меню",
-	HOTKEY_WIB							= u8"Анти-AFK",
-	HOTKEY_CMDS							= u8"Команды скрипта",
-	
-	NEW_NICKNAME						= u8"Никнейм",
-	NEW_IP								= u8"IP:PORT",
-	NEW_PORT							= u8"Порт",
-	NEW_PASTE_CURRENT_NICKNAME			= u8"Текущий",
-	NEW_PASTE_CURRENT_IP_PORT			= u8"Текущий",
-	NEW_CONNECT							= u8"Подключиться",
-	NEW_ACCOUNT							= u8"Подключиться как...",
-	AUTHOR								= u8"Автор: ",
-	VERSION								= u8"Версия: ",
-	DOWNLOAD_NEW_VERSION				= u8"Скачать новую версию ",
-	EMAIL								= u8"Email: ",
-	
-	
-	-- Dialog list
-	CHECK_DIALOG_TITLE					= u8"Определять диалог по заголовку",
-	CHECK_DIALOG_ID						= u8"Определять диалог по ID",
-	CHECK_DIALOG_CONTENT				= u8"Определять диалог по содержимому",
-	DETAILS 							= u8"Подробнее",
-	DELETE_DIALOG						= u8" X ",
-	CONNECT								= u8"Подключиться",
-	
-	-- Dialog details
-	RESPONSE_TEXT						= u8"Отправить текст",
-	RESPONSE_INDEX						= u8"Отправить пункт: ",
-	RESPONSE_BUTTON						= u8"Отправить кнопку: ",
-	GAUTH_KEY							= u8"Ключ Google Authenticator",
-		
-	DIALOG_TITLE						= u8"Заголовок диалога: ",
-	DIALOG_ID							= u8"ID диалога: ",
-	DIALOG_STYLE						= u8"Стиль диалога: ",
-	DIALOG_TEXT							= u8"Текст диалога:",
-		
-	-- Server info
-	SERVER_NAME							= u8"Имя сервера",
-	SERVER_IP							= u8"IP:PORT",
-	SERVER_PORT							= u8"Порт",
-	SERVER_USE_TIMEOUTS					= u8"Использовать тайм-ауты сервера",
-	SERVER_SC_TIMEOUT					= u8"Тайм-аут переподключения командой /sc или горячей клавишей (сек)", --==2
-	SERVER_DISCONNECT_TIMEOUT			= u8"Тайм-аут при разъединении (сек)",
-	SERVER_BANNED_IP_TIMEOUT			= u8"Тайм-аут при бане IP (сек)",
-	SERVER_LOST_CONNECTION_TIMEOUT		= u8"Тайм-аут при потере соединения (сек)",
-	
-	SERVER_CHANGE_NICKNAME				= u8"Подключиться под другим никнеймом",
-	
-	-- Saving window
-	SAVING_TITLE						= u8"Сохранение",
-	SAVING_CHECK_DIALOG_CONTENT			= u8"Определять диалог по содержимому",
-	SAVING_CHECK_DIALOG_TITLE			= u8"Определять диалог по заголовку",
-	SAVING_CHECK_DIALOG_ID				= u8"Определять диалог по ID",
-	SAVING_USER_TITLE					= u8"Название",
-	SAVING_GAUTH						= u8"Ключ Google Authenticator",
-	SAVING_SPAWN_PLAYER					= u8"Заспавнить персонажа (ms)",
-	
-	-- Reconnecting Window
-	RECONNECT_IN						= u8"Переподключение через ",
-	CONNECT								= u8"Подключиться",
-	CANCEL								= u8"Отмена",
-	
-	
-
-}
-
-LANG_BGR = {
-	LABEL								= u8"Български",
-	
-	-- Hello
-	HELLO_MENU							= "Меню",
-	HELLO_NEW_VERSION					= "Нова Версия",
-	HELLO_SAVED							= "Диалогът беше запазен",
-	HELLO_DISCONNECTED					= "Затворихте връзката",
-	
-	-- Top
-	TAB_SETTINGS						= u8"Настройки",
-	TAB_ACCOUNTS						= u8"Aкаунти",
-	ADD_CURRENT_DIALOG					= u8"Запазете диалоговия отговор",
-	
-	
-	-- Settings
-	SETTINGS_HELLO						= u8"Показване на известия в чата",
-	--SETTINGS_NOTIF						= u8"Показване на известия на диалога",
-	SETTINGS_SAVE_BUTTON				= u8"Покажи зелен бутон за да се запамети диалога",
-	SETTINGS_AUTORECONNECT				= u8"Автоматично влизане",
-	SETTINGS_SC_TIMEOUT					= u8"Времето за повторно свързване (sec)",
-	SETTINGS_DISCONNECT_TIMEOUT			= u8"Оставащо време до прекъсване (sec)",
-	SETTINGS_BANNED_IP_TIMEOUT			= u8"Баннато IP (sec)",
-	SETTINGS_LOST_CONNECTION_TIMEOUT	= u8"Изгубена връзка (sec)",
-	
-	SETTINGS_AUTORESPONSE				= u8"Автоматичен отговор на диалога",
-	SETTINGS_AUTORESPONSE_DELAY			= u8"Забавяне на автоматическия диалог (ms)",
-	SETTINGS_FASTCONNECT				= u8"Бързо свързане",
-	SETTINGS_WIB						= u8"Anti-AFK",
-	SETTINGS_PAUSE						= u8"Няма повторно влизане",
-	SETTINGS_PAUSE_TIME					= u8"Времеви Интервал",
-	SETTINGS_RECONNECT					= u8"-    Повторно влизане",
-	SETTINGS_DISCONNECT					= u8"-    Излизане",
-	SETTINGS_MENU						= u8"-    Меню",
-	SETTINGS_COMMANDS					= u8"Команди",
-
-	
-	
-	HOTKEY_AND_CMD						= u8"Бутони",
-	HOTKEY_RECONNECT					= u8"Повторно свързване след %s sec",
-	HOTKEY_DISCONNECT_NOW				= u8"Излизане",
-	HOTKEY_MENU							= u8"Отворете менюто",
-	HOTKEY_WIB							= u8"Anti-AFK",
-	
-	NEW_NICKNAME						= u8"Име",
-	NEW_IP								= u8"IP:PORT",
-	NEW_PORT							= u8"Port",
-	NEW_PASTE_CURRENT_NICKNAME			= u8"Текущ",
-	NEW_PASTE_CURRENT_IP_PORT			= u8"Текущ",
-	NEW_CONNECT							= u8"Свързване",
-	--NEW_ACCOUNT							= u8"Смени акаунт",
-	AUTHOR								= u8"Автор: ",
-	VERSION								= u8"Версия: ",
-	DOWNLOAD_NEW_VERSION				= u8"Изтегли новата версия ",
-	EMAIL								= u8"Email: ",
-	
-	
-	-- Dialog list
-	CHECK_DIALOG_TITLE					= u8"Дефинирайте диалоговия прозорец от заглавието му",
-	CHECK_DIALOG_ID						= u8"Дефинирайте диалоговия прозорец от ID-то",
-	CHECK_DIALOG_CONTENT				= u8"Дефинирайте диалога по неговото съдържание",
-	DETAILS 							= u8"Детайли",
-	DELETE_DIALOG						= u8" X ",
-	CONNECT								= u8"Свързване",
-	
-	-- Dialog details
-	RESPONSE_TEXT						= u8"Изпратете текст: ",
-	RESPONSE_INDEX						= u8"Изпратете индекс на артикул: ",
-	RESPONSE_BUTTON						= u8"Изпратете бутон: ",
-		
-	DIALOG_TITLE						= u8"Заглавието на диалога: ",
-	DIALOG_ID							= u8"Диалоговият прозорец ID: ",
-	DIALOG_STYLE						= u8"Стил на диалога: ",
-	DIALOG_TEXT							= u8"Текстът на диалога:",
-	GAUTH_KEY							= u8"Google Authenticator ключ",
-		
-	-- Server info
-	SERVER_NAME							= u8"Име на сървър",
-	SERVER_IP							= u8"IP:PORT",
-	SERVER_PORT							= u8"Port",
-	SERVER_USE_TIMEOUTS					= u8"Използвайте таймаутите на сървъра",
-	SERVER_SC_TIMEOUT					= u8"Времето за изчакване за повторно свързване (sec): /sc",
-	SERVER_DISCONNECT_TIMEOUT			= u8"Оставащо време до прекъсване (sec)",
-	SERVER_BANNED_IP_TIMEOUT			= u8"Баннато IP таймер (sec)",
-	SERVER_LOST_CONNECTION_TIMEOUT		= u8"Изгубена връзка таймер (sec)",
-	
-	-- Saving window
-	SAVING_TITLE						= u8"Запаметяване",
-	SAVING_CHECK_DIALOG_CONTENT			= u8"Дефинирайте диалога по неговото съдържание",
-	SAVING_CHECK_DIALOG_TITLE			= u8"Дефинирайте диалоговия прозорец от заглавието му",
-	SAVING_CHECK_DIALOG_ID				= u8"Дефинирайте диалоговия прозорец от ID-то",
-	SAVING_USER_TITLE					= u8"Етикет",
-	SAVING_GAUTH						= u8"Google Authenticator ключ",
-	
-	-- Reconnecting Window
-	RECONNECT_IN						= u8"Свързване след ",
-	CONNECT								= u8"Свързване",
-	CANCEL								= u8"Отмяна",
-}
-
-LANG_UKR = {
-	LABEL								= u8"Українська",
-	
-	-- Hello
-	HELLO_MENU							= "Меню",
-	HELLO_NEW_VERSION					= "Нова версія",
-	HELLO_SAVED							= "Відповідь на діалог збережена",
-	HELLO_DISCONNECTED					= "Ви закрили з'єднання",
-	
-	-- Top
-	TAB_SETTINGS						= u8"Налаштування",
-	TAB_ACCOUNTS						= u8"Акаунти",
-	ADD_CURRENT_DIALOG					= u8"Зберегти відповідь на діалог",
-	
-	
-	-- Settings
-	SETTINGS_RESTART_REQUIRED			= u8"Потрібно перезавантаження гри",
-	SETTINGS_FIX_INTERIOR_BUG			= u8"Виправляти баг в дзеркальных інтер'єрах з анти-AFK",
-	SETTINGS_HELLO						= u8"Відображати підказки в чаті",
-	SETTINGS_SAVE_BUTTON				= u8"Відображати зелену кнопку додання діалога",
-	SETTINGS_NOTIF						= u8"Відображати вспливаючі підказки",
-	SETTINGS_RECONNECTING_WINDOW		= u8"Відображати вікно перепідключення",
-	
-	SETTINGS_AUTORECONNECT				= u8"Автоматичне перепідключення",
-	
-	SETTINGS_SC_TIMEOUT					= u8"Тайм-аут перепідключення (сек)",
-	SETTINGS_DISCONNECT_TIMEOUT			= u8"Тайм-аут при роз'єднанні (сек)",
-	SETTINGS_BANNED_IP_TIMEOUT			= u8"Тайм-аут при бані IP (сек)",
-	SETTINGS_LOST_CONNECTION_TIMEOUT	= u8"Тайм-аут при втраті з'єднання (сек)",
-	
-	SETTINGS_AUTORESPONSE				= u8"Автоматична відповідь на діалоги",
-	SETTINGS_AUTORESPONSE_DELAY			= u8"Затримка перед відповіддю (мс)",
-	SETTINGS_FASTCONNECT				= u8"Фаст коннект",
-	SETTINGS_WIB						= u8"Анти-AFK",
-	SETTINGS_PAUSE						= u8"Не перепідключатись автоматично",
-	SETTINGS_PAUSE_TIME					= u8"Час",
-	
-	SETTINGS_RECONNECT					= u8"-    Перепідключитись",
-	SETTINGS_DISCONNECT					= u8"-    Відключитись",
-	SETTINGS_MENU						= u8"-    Меню",
-	SETTINGS_COMMANDS					= u8"Команди",
-	SETTINGS_CONNECTING_TIMEOUT			= u8"Тайм-аут на підключення (мс)",
-	SETTINGS_MENU_CHEAT					= u8"Використовувати як чіт-код",
-	
-	NOTIF_WIB_OFF						= u8"Анти-AFK: Увімкнено",
-	NOTIF_WIB_ON						= u8"Анти-AFK: Вимкнено",
-	NOTIF_AUTO_RESPONSE					= u8"Авто-відповідь",
-	
-	HOTKEY_AND_CMD						= u8"Гарячі клавіші",
-	HOTKEY_RECONNECT					= u8"Перепідключитись через %s сек",
-	HOTKEY_DISCONNECT_NOW				= u8"Відключитись",
-	HOTKEY_MENU							= u8"Відкрити меню",
-	HOTKEY_WIB							= u8"Анти-AFK",
-	HOTKEY_CMDS							= u8"Команди скрипта",
-	
-	NEW_NICKNAME						= u8"Нікнейм",
-	NEW_IP								= u8"IP:PORT",
-	NEW_PORT							= u8"Порт",
-	NEW_PASTE_CURRENT_NICKNAME			= u8"Поточний",
-	NEW_PASTE_CURRENT_IP_PORT			= u8"Поточний",
-	NEW_CONNECT							= u8"Підключитись",
-	NEW_ACCOUNT							= u8"Підключитись як...",
-	AUTHOR								= u8"Автор: ",
-	VERSION								= u8"Версія: ",
-	DOWNLOAD_NEW_VERSION				= u8"Скачати нову версію ",
-	EMAIL								= u8"Email: ",
-	
-	
-	-- Dialog list
-	CHECK_DIALOG_TITLE					= u8"Розпізнавати діалог по заголовку",
-	CHECK_DIALOG_ID						= u8"Розпізнавати діалог по ID",
-	CHECK_DIALOG_CONTENT				= u8"Розпізнавати діалог по вмісту",
-	DETAILS 							= u8"Детальніше",
-	DELETE_DIALOG						= u8" X ",
-	CONNECT								= u8"Підключитися",
-	
-	-- Dialog details
-	RESPONSE_TEXT						= u8"Відправити текст",
-	RESPONSE_INDEX						= u8"Відправити пункт: ",
-	RESPONSE_BUTTON						= u8"Відправити кнопку: ",
-	GAUTH_KEY							= u8"Ключ Google Authenticator",
-		
-	DIALOG_TITLE						= u8"Заголовок діалога: ",
-	DIALOG_ID							= u8"ID діалога: ",
-	DIALOG_STYLE						= u8"Стиль діалога: ",
-	DIALOG_TEXT							= u8"Текст діалога:",
-		
-	-- Server info
-	SERVER_NAME							= u8"Ім'я сервера",
-	SERVER_IP							= u8"IP:PORT",
-	SERVER_PORT							= u8"Порт",
-	SERVER_USE_TIMEOUTS					= u8"Використовувати тайм-аути сервера",
-	SERVER_SC_TIMEOUT					= u8"Тайм-аут перепідключення (сек): /sc",
-	SERVER_DISCONNECT_TIMEOUT			= u8"Тайм-аут при роз'єднанні (сек)",
-	SERVER_BANNED_IP_TIMEOUT			= u8"Тайм-аут при бані IP (сек)",
-	SERVER_LOST_CONNECTION_TIMEOUT		= u8"Тайм-аут при втраті з'єднання (сек)",
-	
-	SERVER_CHANGE_NICKNAME				= u8"Підключитись з іншим нікнеймом",
-	
-	-- Saving window
-	SAVING_TITLE						= u8"Збереження",
-	SAVING_CHECK_DIALOG_CONTENT			= u8"Розпізнавати діалог по вмісту",
-	SAVING_CHECK_DIALOG_TITLE			= u8"Розпізнавати діалог по заголовку",
-	SAVING_CHECK_DIALOG_ID				= u8"Розпізнавати діалог по ID",
-	SAVING_USER_TITLE					= u8"Назва",
-	SAVING_GAUTH						= u8"Ключ Google Authenticator",
-	SAVING_SPAWN_PLAYER					= u8"Заспавнити персонажа (ms)",
-	
-	-- Reconnecting Window
-	RECONNECT_IN						= u8"Перепідключення через ",
-	CONNECT								= u8"Підключитись",
-	CANCEL								= u8"Скасувати",
-}
-
-
-LANG_TITLE = u8"Language | Язык | Език | Мова"
-LANGS = {LANG_ENG, LANG_RUS, LANG_BGR, LANG_UKR}
+LANG_TITLE = u8"Language"
+LANGS = {LANG_ENG}
 
 for index, lang in ipairs(LANGS) do
 	luacfg.update(lang, LANG_ENG, false)
@@ -2018,7 +1683,7 @@ if cfg.fix_interior_bug then
 	writeMemory(0x555858, 1, 144, true)
 end
 
-LANG = LANGS[cfg.lang_index]
+LANG = LANG_ENG
 
 servers = {
 --[[
@@ -2026,9 +1691,9 @@ servers = {
 		logins = {
 			{nickname = "Jane_Christie",
 				dialogs = {
-					{nickname = "Jane_Christie", response_button = 1, response_text = "1234", response_index = 1, text = "( ? )", title = "Введите пароль", user_title = "Один", id = 26, check_content = true, check_title = false, check_id = false},
-					{nickname = "Jane_Christie", response_button = 1, response_text = "1234", response_index = 1, text = "( ? )", title = "Введите пароль", user_title = "Два", id = 26, check_content = true, check_title = false, check_id = false},
-					{nickname = "Jane_Christie", response_button = 1, response_text = "1234", response_index = 1, text = "( ? )", title = "Введите пароль", user_title = "Три", id = 26, check_content = true, check_title = false, check_id = false},
+					{nickname = "Jane_Christie", response_button = 1, response_text = "1234", response_index = 1, text = "( ? )", title = "Enter password", user_title = "One", id = 26, check_content = true, check_title = false, check_id = false},
+					{nickname = "Jane_Christie", response_button = 1, response_text = "1234", response_index = 1, text = "( ? )", title = "Enter password", user_title = "Two", id = 26, check_content = true, check_title = false, check_id = false},
+					{nickname = "Jane_Christie", response_button = 1, response_text = "1234", response_index = 1, text = "( ? )", title = "Enter password", user_title = "Three", id = 26, check_content = true, check_title = false, check_id = false},
 				}	
 			}
 		}
@@ -2040,7 +1705,7 @@ servers = {
 
 luacfg.update(servers, filename_servers)
 
--- Совместимость < 2.1.4
+-- Compatibility < 2.1.4
 for server_index, server in ipairs(servers) do
 	luacfg.update(server, {["sc_timeout"] = cfg.sc_timeout}, false)
 end
@@ -2065,7 +1730,7 @@ function setCenterCursor()
 	ffi.C.ClientToScreen(ffi.C.GetActiveWindow(), point2)
 	
 	ffi.C.SetCursorPos(point.x+cRECT.right/2, point.y+cRECT.bottom/2)
-	--sampAddChatMessage("курсор в центр, надеюсь...", -1)
+		--sampAddChatMessage("cursor to center, hopefully...", -1)
 end
 
 function ClipCursor(state)
@@ -2452,7 +2117,7 @@ function cmd_sc(timeout_sec, disconnect_now, ping)
 
 		sampSetGamestate(GAMESTATE_WAIT_CONNECT)
 		start_connecting = os.clock()
-		--sampAddChatMessage("Подключение через /sc...", 0xff8800)
+				--sampAddChatMessage("Connecting via /sc...", 0xff8800)
 	end)
 		
 	sc_thread:run()
@@ -2555,7 +2220,7 @@ end
 
 function set_cmds(work)
 	if work then
-		-- Сommands
+				-- Commands
 		sampRegisterChatCommand(MAIN_CMD,
 			function()
 				imw_menu.v = not imw_menu.v
@@ -2578,7 +2243,7 @@ function onReceivePacket(id, bitStream)
 	
 	if (id == PACKET_RECEIVED_STATIC_DATA) then
 		--start_connecting = nil
-		--sampAddChatMessage("Контакт с сервером установлен", 0xff8800)
+				--sampAddChatMessage("Contact with the server established", 0xff8800)
 	
 	elseif (id == PACKET_INVALID_PASSWORD) then
 		start_connecting = nil
@@ -2657,7 +2322,7 @@ function onReceivePacket(id, bitStream)
 	elseif (id == PACKET_CONNECTION_ATTEMPT_FAILED) then
 		if not start_connecting then
 			start_connecting = os.clock()
-			--sampAddChatMessage("Подключение через didn't respond...", 0xff8800)
+						--sampAddChatMessage("Connecting via didn't respond...", 0xff8800)
 		end
 		
 	
@@ -2671,7 +2336,7 @@ function onReceiveRpc(id, bitStream)
 	--sampAddChatMessage("rpc "..id, -1)
 	if (id == RPC_SCRINITGAME) then
 		start_connecting = nil
-		--sampAddChatMessage("Подключено", 0xff8800)
+				--sampAddChatMessage("Connected", 0xff8800)
 	end
 	
 	
@@ -2787,7 +2452,7 @@ function sampev.onSendDialogResponse(id, button, index, text)
 		gauth_key = nil
 		use_gauth = nil
 		
-		sampAddChatMessage("• {88FF88}["..MAIN_TITLE.."] {FFFFFF}"..LANG.HELLO_SAVED, 0xFFFFFF)
+		sampAddChatMessage("{88FF88}["..MAIN_TITLE.."] {FFFFFF}"..LANG.HELLO_SAVED, 0xFFFFFF)
 	end
 end
 
@@ -3208,7 +2873,7 @@ function imgui.OnDrawFrame()
 			
 			
 			
-			--------------- нижние вкладки ----------------
+						--------------- bottom tabs ----------------
 			
 			local str_id = "## tab: settings: tabs"
 			
@@ -3253,10 +2918,10 @@ function imgui.OnDrawFrame()
 			if cfg.current_tab == "settings" then
 				imgui.BeginChild("sc_timeout", imgui.ImVec2(0, -50), true)
 				
-					----------- Реконект ------------------
+										----------- Reconnect ------------------
 					if cfg.current_settings_tab == "reconnect" then
 						
-						--------------- Команды для реконекта ----------------
+												--------------- Reconnect commands ----------------
 						imgui.TextColoredRGB(u8"{008800}/sc {0077FF}[sec]", 3)
 						imgui.SameLine()
 						imgui.SetCursorPosX(65)
@@ -3271,7 +2936,7 @@ function imgui.OnDrawFrame()
 					
 						imgui.Separator()
 						
-						--------------- ручной реконнект ----------------
+												--------------- manual reconnect ----------------
 						imgui.PushItemWidth(45)
 						
 						-- ##
@@ -3310,7 +2975,7 @@ function imgui.OnDrawFrame()
 						imgui.Text(LANG.HOTKEY_DISCONNECT_NOW)
 						
 						
-						---------------- Авто реконнект ----------------------------
+												---------------- Auto reconnect ----------------------------
 					
 						imgui.Separator()
 						
@@ -3375,7 +3040,7 @@ function imgui.OnDrawFrame()
 						imgui.PopItemWidth()
 						
 						
-						-------------- Пауза ------------------------
+												-------------- Pause ------------------------
 						
 						imgui.Separator()
 						
@@ -3466,7 +3131,7 @@ function imgui.OnDrawFrame()
 						
 						imgui.Separator()
 						
-						-------------- Таймаут на подключение -----
+												-------------- Connecting timeout -----
 						-- ##
 						local im_bool = imgui.ImBool(cfg.use_connecting_timeout)
 						local str_id = "## cfg.use_connecting_timeout"
@@ -3496,7 +3161,7 @@ function imgui.OnDrawFrame()
 					
 					
 					
-					--------------------- Авто ответ ----------------
+										--------------------- Auto response ----------------
 					if cfg.current_settings_tab == "autoresponse" then
 						local im_bool = imgui.ImBool(cfg.autoresponse)
 						local str_id = "## cfg.autoresponse"
@@ -3523,7 +3188,7 @@ function imgui.OnDrawFrame()
 						imgui.PopItemWidth()
 					end
 					
-					--------------------- Прочее --------------
+										--------------------- Other --------------
 					if cfg.current_settings_tab == "other" then
 						imgui.TextColoredRGB(u8"{008800}/scm")
 						imgui.SameLine(65)
@@ -3654,7 +3319,7 @@ function imgui.OnDrawFrame()
 						end
 					end
 					
-					--------------------- Инфо ---------------------
+										--------------------- Info ---------------------
 					if cfg.current_settings_tab == "info" then
 						
 						imgui.TextDisabled(LANG.VERSION..__version__)
@@ -3668,16 +3333,16 @@ function imgui.OnDrawFrame()
 						end		
 				
 						imgui.TextQuestion(LANG.AUTHOR..__author__, u8[[
-	И вот теперь в краю мечты волне навстречу слеза бежит.
-	И вздрогнул я, и понял всё: что я искал… и что нашёл.
+	And now, in the land of dreams, a tear runs to meet the wave.
+	I shuddered and understood everything: what I sought... and what I found.
 
-	Это всё наваждение, это песни сирен.
-	Этим ласковым тварям не взять меня в плен!
+	This is all an illusion, these are the songs of sirens.
+	These gentle creatures will not take me prisoner!
 
-	Золотые долины, хрустальные небеса…
-	Я хочу их увидеть в огне! Прости меня.
+	Golden valleys, crystal skies...
+	I want to see them in flames! Forgive me.
 
-	© Argument 5.45]]
+	(c) Argument 5.45]]
 						)
 
 						imgui.TextDisabled(LANG.EMAIL..__email__)
@@ -3686,17 +3351,6 @@ function imgui.OnDrawFrame()
 				
 				imgui.EndChild()
 				
-				--imgui.TextDisabled(LANG_TITL)
-				
-			
-				for index, value in ipairs(LANGS) do
-					if imgui.RadioButton(value.LABEL.."## LANG##"..index, cfg.lang_index == index) then
-						cfg.lang_index = index
-						LANG = value
-						luacfg.save(cfg, filename_cfg)
-					end	
-					imgui.SameLine()
-				end
 			end
 			
 			
@@ -3962,7 +3616,7 @@ function imgui.OnDrawFrame()
 					
 				imgui.SameLine()
 				
-				imgui.BeginGroup("Правая часть")
+								imgui.BeginGroup("Right side")
 					
 					----- SERVER INFO -----
 					
@@ -4288,7 +3942,7 @@ function main()
 	cursor_thread.work_in_pause = true
 	cursor_thread:run()
 	
-	-- Проверяем обновение
+	-- Checking for updates
 	downloadUrlToFile("https://pastebin.com/raw/WaLz0LzP", filename_update,
 		function(id, status, p1, p2) 
 			if status == dlstatus.STATUS_ENDDOWNLOADDATA then
@@ -4309,7 +3963,7 @@ function main()
 						end
 						
 						if cfg.hello then
-							sampAddChatMessage("• {FF8888}["..MAIN_TITLE.."] {FFFFFF}/"..MAIN_CMD.." | "..LANG.HELLO_NEW_VERSION.." "..upd_version, 0xFFFFFF)
+							sampAddChatMessage("{FF8888}["..MAIN_TITLE.."] {FFFFFF}/"..MAIN_CMD.." | "..LANG.HELLO_NEW_VERSION.." "..upd_version, 0xFFFFFF)
 						end
 						
 					end
@@ -4363,7 +4017,7 @@ function main()
 	
 	
 	if cfg.hello then
-		sampAddChatMessage("• {FFC800}["..MAIN_TITLE.."] {FFFFFF}/"..MAIN_CMD.." | "..LANG.HELLO_MENU, 0xFFFFFF)
+		sampAddChatMessage("{FFC800}["..MAIN_TITLE.."] {FFFFFF}/"..MAIN_CMD.." | "..LANG.HELLO_MENU, 0xFFFFFF)
 	end
 	
 	
@@ -4378,7 +4032,7 @@ function main()
 			if start_connecting and (os.clock()-start_connecting) > (cfg.connecting_timeout / 1000) then
 				start_connecting = nil
 				cmd_sc(0, true, true)
-				--sampAddChatMessage("Время вышло", 0xFF8800)
+								--sampAddChatMessage("Time is up", 0xFF8800)
 			end
 		end
 
