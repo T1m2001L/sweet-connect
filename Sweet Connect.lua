@@ -1853,6 +1853,11 @@ function sampGetNickname()
 	end
 end
 
+-- Nickname comparison that ignores case (lic_man == LiC_Man)
+function nick_equal(a, b)
+	return a ~= nil and b ~= nil and a:lower() == b:lower()
+end
+
 function add_dialog(args)
 	
 	-- ip, port, name,
@@ -1888,7 +1893,7 @@ function add_dialog(args)
 		if	server.ip == args.ip and server.port == args.port then
 		
 			for login_index, login in ipairs(server.logins) do
-				if login.nickname == args.nickname then
+				if nick_equal(login.nickname, args.nickname) then
 					table.insert(login.dialogs, dialog)
 					return
 				end
@@ -1928,7 +1933,7 @@ function get_dialog(args)
 		if server.ip == args.ip and server.port == args.port then
 			for login_index, login in ipairs(server.logins) do
 				
-				if login.nickname == args.nickname then
+				if nick_equal(login.nickname, args.nickname) then
 					for dialog_index, dialog in ipairs(login.dialogs) do
 						
 						if	(not dialog.check_id or dialog.id == args.id)
