@@ -29,7 +29,7 @@ memory 				= require 'memory'
 dlstatus			= require('moonloader').download_status
 
 encoding			= require "encoding"
-encoding.default	= "CP1251"
+encoding.default	= "CP936" -- GBK: encoding used by the Chinese SA-MP client and servers.txt
 u8					= encoding.UTF8
 
 ffi 				= require 'ffi'
@@ -1498,119 +1498,119 @@ IS_CURSOR_BLOCKED = true
 -- settings
 
 LANG_ENG = {
-	LABEL								= u8"English",
+	LABEL								= "中文",
 	
 	-- Hello
-	HELLO_MENU							= "Menu",
-	HELLO_NEW_VERSION					= "New version",
-	HELLO_SAVED							= "The dialog response was saved",
-	HELLO_DISCONNECTED					= "You closed connection",
+	HELLO_MENU							= "菜单",
+	HELLO_NEW_VERSION					= "新版本",
+	HELLO_SAVED							= "对话框响应已保存",
+	HELLO_DISCONNECTED					= "你已关闭连接",
 	
 	-- Top
-	TAB_SETTINGS						= u8"Settings",
-	TAB_SETTINGS_RECONNECT				= u8"Reconnect",
-	TAB_ACCOUNTS						= u8"Accounts",
-	ADD_CURRENT_DIALOG					= u8"Save the dialog response",
-	TAB_SETTINGS_AUTORESPONSE			= u8"Dialog response",
-	TAB_SETTINGS_OTHER					= u8"Other",
-	TAB_SETTINGS_INFO					= u8"About",
+	TAB_SETTINGS						= "设置",
+	TAB_SETTINGS_RECONNECT				= "重连",
+	TAB_ACCOUNTS						= "账号",
+	ADD_CURRENT_DIALOG					= "保存对话框响应",
+	TAB_SETTINGS_AUTORESPONSE			= "对话框响应",
+	TAB_SETTINGS_OTHER					= "其他",
+	TAB_SETTINGS_INFO					= "关于",
 	
 	
 	-- Settings
-	SETTINGS_RESTART_REQUIRED			= u8"Game restart required",
-	SETTINGS_FIX_INTERIOR_BUG			= u8"Fix mirror interior bug with anti-AFK",
-	SETTINGS_HELLO						= u8"Show notifications in chat",
-	SETTINGS_NOTIF						= u8"Show pop-up notifications",
-	SETTINGS_SAVE_BUTTON				= u8"Show green button to save dialog response",
-	SETTINGS_AUTORECONNECT				= u8"Auto reconnect",
-	SETTINGS_SC_TIMEOUT					= u8"Reconnect timeout (sec)",
-	SETTINGS_DISCONNECT_TIMEOUT			= u8"Disconnect timeout (sec)",
-	SETTINGS_BANNED_IP_TIMEOUT			= u8"Banned IP timeot (sec)",
-	SETTINGS_LOST_CONNECTION_TIMEOUT	= u8"Lost connection timeout (sec)",
+	SETTINGS_RESTART_REQUIRED			= "需要重启游戏",
+	SETTINGS_FIX_INTERIOR_BUG			= "防挂机时修复镜像室内的 Bug",
+	SETTINGS_HELLO						= "在聊天框显示提示",
+	SETTINGS_NOTIF						= "显示弹窗通知",
+	SETTINGS_SAVE_BUTTON				= "显示保存对话框响应的绿色按钮",
+	SETTINGS_AUTORECONNECT				= "自动重连",
+	SETTINGS_SC_TIMEOUT					= "重连超时（秒）",
+	SETTINGS_DISCONNECT_TIMEOUT			= "断开连接超时（秒）",
+	SETTINGS_BANNED_IP_TIMEOUT			= "封禁 IP 超时（秒）",
+	SETTINGS_LOST_CONNECTION_TIMEOUT	= "丢失连接超时（秒）",
 	
-	SETTINGS_AUTORESPONSE				= u8"Auto dialog response",
-	SETTINGS_AUTORESPONSE_DELAY			= u8"Delay of auto dialog response (ms)",
-	SETTINGS_FASTCONNECT				= u8"Fast connect",
-	SETTINGS_WIB						= u8"Anti-AFK",
-	SETTINGS_PAUSE						= u8"No auto reconnect",
-	SETTINGS_PAUSE_TIME					= u8"Time range",
-	SETTINGS_RECONNECT					= u8"-    Reconnect",
-	SETTINGS_DISCONNECT					= u8"-    Disconnect",
-	SETTINGS_MENU						= u8"-    Menu",
-	SETTINGS_COMMANDS					= u8"Commands",
-	SETTINGS_CONNECTING_TIMEOUT			= u8"Connecting timeout (ms)",
-	SETTINGS_RECONNECTING_WINDOW		= u8"Show reconnecting window",
-	SETTINGS_MENU_CHEAT					= u8"-    Use like a cheat code",
+	SETTINGS_AUTORESPONSE				= "自动响应对话框",
+	SETTINGS_AUTORESPONSE_DELAY			= "自动响应对话框的延迟（毫秒）",
+	SETTINGS_FASTCONNECT				= "快速连接",
+	SETTINGS_WIB						= "防挂机",
+	SETTINGS_PAUSE						= "不自动重连",
+	SETTINGS_PAUSE_TIME					= "时间范围",
+	SETTINGS_RECONNECT					= "-    重连",
+	SETTINGS_DISCONNECT					= "-    断开连接",
+	SETTINGS_MENU						= "-    菜单",
+	SETTINGS_COMMANDS					= "命令",
+	SETTINGS_CONNECTING_TIMEOUT			= "连接超时（毫秒）",
+	SETTINGS_RECONNECTING_WINDOW		= "显示重连窗口",
+	SETTINGS_MENU_CHEAT					= "-    像作弊码一样使用",
 	
-	NOTIF_WIB_OFF						= u8"Anti-AFK: Disabled",
-	NOTIF_WIB_ON						= u8"Anti-AFK: Enabled",
-	NOTIF_AUTO_RESPONSE					= u8"Auto-response",
+	NOTIF_WIB_OFF						= "防挂机：已关闭",
+	NOTIF_WIB_ON						= "防挂机：已开启",
+	NOTIF_AUTO_RESPONSE					= "自动响应",
 	
 	
-	HOTKEY_AND_CMD						= u8"Hotkeys",
-	HOTKEY_RECONNECT					= u8"Reconnect in %s sec",
-	HOTKEY_DISCONNECT_NOW				= u8"Disconnect",
-	HOTKEY_MENU							= u8"Open the menu",
-	HOTKEY_WIB							= u8"Anti-AFK",
-	HOTKEY_CMDS							= u8"Script commands",
+	HOTKEY_AND_CMD						= "快捷键",
+	HOTKEY_RECONNECT					= "%s 秒后重连",
+	HOTKEY_DISCONNECT_NOW				= "断开连接",
+	HOTKEY_MENU							= "打开菜单",
+	HOTKEY_WIB							= "防挂机",
+	HOTKEY_CMDS							= "脚本命令",
 	
-	NEW_NICKNAME						= u8"Nickname",
-	NEW_IP								= u8"IP:PORT",
-	NEW_PORT							= u8"Port",
-	NEW_PASTE_CURRENT_NICKNAME			= u8"Current",
-	NEW_PASTE_CURRENT_IP_PORT			= u8"Current",
-	NEW_CONNECT							= u8"Connect",
-	NEW_ACCOUNT							= u8"Connect as...",
-	AUTHOR								= u8"Author: ",
-	VERSION								= u8"Version: ",
-	DOWNLOAD_NEW_VERSION				= u8"Download the new version ",
-	EMAIL								= u8"Email: ",
+	NEW_NICKNAME						= "昵称",
+	NEW_IP								= "IP:端口",
+	NEW_PORT							= "端口",
+	NEW_PASTE_CURRENT_NICKNAME			= "当前",
+	NEW_PASTE_CURRENT_IP_PORT			= "当前",
+	NEW_CONNECT							= "连接",
+	NEW_ACCOUNT							= "连接为...",
+	AUTHOR								= "作者：",
+	VERSION								= "版本：",
+	DOWNLOAD_NEW_VERSION				= "下载新版本 ",
+	EMAIL								= "邮箱：",
 	
 	
 	-- Dialog list
-	CHECK_DIALOG_TITLE					= u8"Define the dialog by its title",
-	CHECK_DIALOG_ID						= u8"Define the dialog by its ID",
-	CHECK_DIALOG_CONTENT				= u8"Define the dialog by its content",
-	DETAILS 							= u8"Details",
-	DELETE_DIALOG						= u8" X ",
-	CONNECT								= u8"Connect",
+	CHECK_DIALOG_TITLE					= "按标题识别对话框",
+	CHECK_DIALOG_ID						= "按 ID 识别对话框",
+	CHECK_DIALOG_CONTENT				= "按内容识别对话框",
+	DETAILS 							= "详情",
+	DELETE_DIALOG						= " X ",
+	CONNECT								= "连接",
 	
 	-- Dialog details
-	RESPONSE_TEXT						= u8"Send a text: ",
-	RESPONSE_INDEX						= u8"Send an item index: ",
-	RESPONSE_BUTTON						= u8"Send a button: ",
+	RESPONSE_TEXT						= "发送文本：",
+	RESPONSE_INDEX						= "发送选项序号：",
+	RESPONSE_BUTTON						= "发送按钮：",
 		
-	DIALOG_TITLE						= u8"The dialog title: ",
-	DIALOG_ID							= u8"The dialog ID: ",
-	DIALOG_STYLE						= u8"The dialog style: ",
-	DIALOG_TEXT							= u8"The dialog text:",
-	GAUTH_KEY							= u8"Google Authenticator key",
+	DIALOG_TITLE						= "对话框标题：",
+	DIALOG_ID							= "对话框 ID：",
+	DIALOG_STYLE						= "对话框样式：",
+	DIALOG_TEXT							= "对话框内容：",
+	GAUTH_KEY							= "Google 身份验证器密钥",
 		
 	-- Server info
-	SERVER_NAME							= u8"Server name",
-	SERVER_IP							= u8"IP:PORT",
-	SERVER_PORT							= u8"Port",
-	SERVER_USE_TIMEOUTS					= u8"Use the server timeouts",
-	SERVER_SC_TIMEOUT					= u8"Reconnect timeout (sec): /sc",
-	SERVER_DISCONNECT_TIMEOUT			= u8"Disconnect timeout (sec)",
-	SERVER_BANNED_IP_TIMEOUT			= u8"Banned IP timeot (sec)",
-	SERVER_LOST_CONNECTION_TIMEOUT		= u8"Lost connection timeout (sec)",
+	SERVER_NAME							= "服务器名称",
+	SERVER_IP							= "IP:端口",
+	SERVER_PORT							= "端口",
+	SERVER_USE_TIMEOUTS					= "使用该服务器的超时设置",
+	SERVER_SC_TIMEOUT					= "重连超时（秒）：/sc",
+	SERVER_DISCONNECT_TIMEOUT			= "断开连接超时（秒）",
+	SERVER_BANNED_IP_TIMEOUT			= "封禁 IP 超时（秒）",
+	SERVER_LOST_CONNECTION_TIMEOUT		= "丢失连接超时（秒）",
 	
-	SERVER_CHANGE_NICKNAME				= u8"Connect with another nickname",
+	SERVER_CHANGE_NICKNAME				= "使用其他昵称连接",
 	
 	-- Saving window
-	SAVING_TITLE						= u8"Saving",
-	SAVING_CHECK_DIALOG_CONTENT			= u8"Define the dialog by its content",
-	SAVING_CHECK_DIALOG_TITLE			= u8"Define the dialog by its title",
-	SAVING_CHECK_DIALOG_ID				= u8"Define the dialog by its ID",
-	SAVING_USER_TITLE					= u8"Label",
-	SAVING_GAUTH						= u8"Google Authenticator Key",
-	SAVING_SPAWN_PLAYER					= u8"Spawn player (ms)",
+	SAVING_TITLE						= "保存",
+	SAVING_CHECK_DIALOG_CONTENT			= "按内容识别对话框",
+	SAVING_CHECK_DIALOG_TITLE			= "按标题识别对话框",
+	SAVING_CHECK_DIALOG_ID				= "按 ID 识别对话框",
+	SAVING_USER_TITLE					= "名称",
+	SAVING_GAUTH						= "Google 身份验证器密钥",
+	SAVING_SPAWN_PLAYER					= "生成玩家（毫秒）",
 	
 	-- Reconnecting Window
-	RECONNECT_IN						= u8"Reconnect in ",
-	CONNECT								= u8"Connect",
-	CANCEL								= u8"Cancel",
+	RECONNECT_IN						= "重连倒计时 ",
+	CONNECT								= "连接",
+	CANCEL								= "取消",
 	
 	
 
@@ -2136,7 +2136,7 @@ function cmd_scd()
 	--if sampGetGamestate() == GAMESTATE_CONNECTED then
 		start_connecting = nil
 		sampSetGamestate(GAMESTATE_DISCONNECTED)
-		sampAddChatMessage(LANG.HELLO_DISCONNECTED, 0xABCDEF)
+		sampAddChatMessage(u8:decode(LANG.HELLO_DISCONNECTED), 0xABCDEF)
 		--sampDisconnectWithReason(0)
 	--end
 end
@@ -2457,7 +2457,7 @@ function sampev.onSendDialogResponse(id, button, index, text)
 		gauth_key = nil
 		use_gauth = nil
 		
-		sampAddChatMessage("{88FF88}["..MAIN_TITLE.."] {FFFFFF}"..LANG.HELLO_SAVED, 0xFFFFFF)
+		sampAddChatMessage("{88FF88}["..MAIN_TITLE.."] {FFFFFF}"..u8:decode(LANG.HELLO_SAVED), 0xFFFFFF)
 	end
 end
 
@@ -2529,8 +2529,12 @@ local button_h2 = 28
 
 function imgui.OnDrawFrame()
 	local w, h = getScreenResolution()
-	
-	
+
+	local use_chinese_font = chinese_font ~= nil
+	if use_chinese_font then
+		imgui.PushFont(chinese_font)
+	end
+
 	if imw_notif.v then
 	
 		if (os.clock() - notif_clock) < 1.5 then
@@ -3872,7 +3876,10 @@ function imgui.OnDrawFrame()
 		
 		imgui.End()
 	end
-	
+
+	if use_chinese_font then
+		imgui.PopFont()
+	end
 end
 
 function main()
@@ -3885,8 +3892,22 @@ function main()
 	end	
 
 	
+	-- Load a CJK-capable font before the first ImGui frame so the UI can render Chinese.
+	-- Build glyph ranges with a builder (the same approach the library uses for its
+	-- default font): Cyrillic + the full CJK set, plus punctuation that is otherwise
+	-- missing (e.g. the ellipsis). The ranges object is kept as an upvalue because the
+	-- atlas only stores the pointer, not the data.
+	local fonts = imgui.GetIO().Fonts
+	local builder = imgui.ImFontAtlasGlyphRangesBuilder()
+	builder:AddRanges(fonts:GetGlyphRangesCyrillic())
+	builder:AddRanges(fonts:GetGlyphRangesChinese())
+	builder:AddText("\226\128\166") -- U+2026 horizontal ellipsis "..."
+	chinese_glyph_ranges = builder:BuildRanges()
+	chinese_font = fonts:AddFontFromFileTTF(
+		'C:\\WINDOWS\\Fonts\\msyh.ttc', 16.0, nil, chinese_glyph_ranges)
+
 	imgui.Process = true
-	
+
 	if cfg.fastconnect then
 		set_fastconnect(cfg.fastconnect)
 	end
@@ -3968,7 +3989,7 @@ function main()
 						end
 						
 						if cfg.hello then
-							sampAddChatMessage("{FF8888}["..MAIN_TITLE.."] {FFFFFF}/"..MAIN_CMD.." | "..LANG.HELLO_NEW_VERSION.." "..upd_version, 0xFFFFFF)
+							sampAddChatMessage("{FF8888}["..MAIN_TITLE.."] {FFFFFF}/"..MAIN_CMD.." | "..u8:decode(LANG.HELLO_NEW_VERSION).." "..upd_version, 0xFFFFFF)
 						end
 						
 					end
@@ -4022,7 +4043,7 @@ function main()
 	
 	
 	if cfg.hello then
-		sampAddChatMessage("{FFC800}["..MAIN_TITLE.."] {FFFFFF}/"..MAIN_CMD.." | "..LANG.HELLO_MENU, 0xFFFFFF)
+		sampAddChatMessage("{FFC800}["..MAIN_TITLE.."] {FFFFFF}/"..MAIN_CMD.." | "..u8:decode(LANG.HELLO_MENU), 0xFFFFFF)
 	end
 	
 	
