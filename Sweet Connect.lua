@@ -2380,6 +2380,16 @@ function move_server(from, to)
 end
 
 --
+-- === Fix: soft-reconnect spawn crash ===
+-- samp.dll append-only table (base RVA 0x136B38, 20-byte entries) keeps its
+-- next-write index at RVA 0x13B958. A full restart resets it to 0; a soft
+-- reconnect does not, so it accumulates and at index 1027 overwrites the
+-- object-pool pointer at RVA 0x13BB74 -> spawn dereferences garbage and crashes.
+local function resetAppendCounter()
+	pcall(function()
+		writeMemory(sampGetBase() + 0x13B958, 4, 0, true)
+	end)
+end
 function cmd_sc(timeout_sec, disconnect_now, ping)
 	if disconnect_now == nil then
 		disconnect_now = true
@@ -2438,6 +2448,8 @@ function cmd_sc(timeout_sec, disconnect_now, ping)
 		end
 		
 		
+		resetAppendCounter()
+
 		sampSetGamestate(GAMESTATE_WAIT_CONNECT)
 		start_connecting = os.clock()
 		--sampAddChatMessage("Подключение через /sc...", 0xff8800)
