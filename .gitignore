@@ -1,0 +1,15 @@
+# Keep ALL runtime dependencies (including .dll) tracked — this repo must be
+# clone-and-deploy ready. Ignore only real junk.
+
+# Lua compiled
+*.luac
+
+# OS / editor
+Thumbs.db
+.DS_Store
+.vscode/
+.idea/
+
+# Logs / temp
+*.log
+*.tmp
